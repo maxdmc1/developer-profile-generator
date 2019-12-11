@@ -91,7 +91,7 @@ inquirer
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors.wrapperBackground};
+         background-color: ${colors};
          padding-top: 100px;
          }
          body {
@@ -133,8 +133,8 @@ inquirer
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors.headerBackground};
-         color: ${colors.headerColor};
+         background-color: ${colors};
+         color: white;
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -145,7 +145,7 @@ inquirer
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors.photoBorderColor};
+         border: 6px solid ${colors};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -188,8 +188,8 @@ inquirer
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors.headerBackground};
-           color: ${colors.headerColor};
+           background-color: ${colors};
+           color: white;
            margin: 20px;
          }
          
@@ -212,24 +212,32 @@ inquirer
       </style>
                   </head>
                   <body>
-                      <div class="container">
-                          <div>
-                              <img src="${profileImage}"></img>
-                          </div>
-                          <p>Name: ${userName}</p>
-                          <p>Location:</p>
-                          <a href="https://www.google.com/maps/place/${response.data.location}" target="_blank">${response.data.location}</a>
-                          <a href="https://github.com/${response.data.login}" target="_blank">Link to User GitHub Profile</a>
-                          <a href="https://github.com/${response.data.blog}" target="_blank">Link to User Blog</a>
-                          <p>User's Biography:${bio}</p>
-                          <p>Number of Followers: ${followers}</p>
-                          <p>Number of Users Following: ${following}</p> 
-                  
-                  
+                  <div class="container main">
+                      <div class="row wrapper photo-header">
+                          <img class="photo-header img" src="${profileImage}"></img>
+              
+                          <h1 class="photo-header">Name: ${userName}</h1>
                       </div>
-                  
-                      
-                  </body>
+                      <div class="row">
+                          <div class="links-nav">
+                              <a class="nav-link" href="https://www.google.com/maps/place/${response.data.location}" target="_blank">${response.data.location}</a>
+                              <a class="nav-link" href="https://github.com/${response.data.login}" target="_blank">Link to User GitHub Profile</a>
+                              <a class="nav-link" href="${response.data.blog}" target="_blank">Link to User Blog</a>
+                          </div>
+                      </div>
+                      <div>User's Biography: ${bio}</div>
+                      <div class="row">
+                          <div class="card col">Number of Followers: ${followers}</div>
+                          <div class="card col">Number of Users Following: ${following}</div>
+                      </div>
+                      <div class="row">
+                          <div class="card col">Number of Public Repositories: ${pubRepos}</div>
+                      </div>
+              
+                  </div>
+              
+              
+              </body>
                   </html>
                   `}, function (err, result) {
                     if (err) {
@@ -241,7 +249,7 @@ inquirer
                     result.stream.pipe(fs.createWriteStream('./index.pdf'));
                     conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details
                 });
-                
+
 
 
 
