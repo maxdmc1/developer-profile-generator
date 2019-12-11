@@ -1,0 +1,26 @@
+{
+  "name": "developer-profile-generator",
+  "version": "1.0.0",
+  "description": "code to generate a pdf file based on information in github profile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxdmc1/developer-profile-generator.git"
+  },
+  "author": "Max McCord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxdmc1/developer-profile-generator/issues"
+  },
+  "homepage": "https://github.com/maxdmc1/developer-profile-generator#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "electron": "^5.0.12",
+    "electron-html-to": "^2.6.0",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.0.0"
+  }
+}
